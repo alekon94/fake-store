@@ -3,10 +3,9 @@
       "prettier --write",
       "eslint"
     ],
-    "*.js": [
-        "prettier --write",
-        "eslint"
-      ],
+    
+    "*.js": ["eslint", "prettier --write"],
+      
     "*.html": [
       "eslint",
       "prettier --write"
