@@ -1,0 +1,24 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import * as S from './styled';
+
+export default function Header() {
+    return (
+        <S.Header className="Hello">
+            <S.Title>Hi</S.Title>
+            <nav className="row space-between">
+                <ul className="row nav">
+                    <li>
+                        <NavLink to="/">Products</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/cart">Cart</NavLink>
+                        <NavLink to="/registration">Registration</NavLink>
+                        <NavLink to="/login">Login</NavLink>
+                        <NavLink to="/users">Users</NavLink>
+                    </li>
+                </ul>
+            </nav>
+        </S.Header>
+    );
+}
