@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/index';
 import ErrorPage from './pages/ErrorPage';
 
-const Cart = React.lazy(() => import('./pages/Cart'));
+const Cart = React.lazy(() => import('./pages/Сart'));
 const Products = React.lazy(() => import('./pages/Products'));
 const Registration = React.lazy(() => import('./pages/Registration'));
 const Login = React.lazy(() => import('./pages/Login'));
