@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/index';
-import FourZeroFour from './pages/404';
+import ErrorPage from './pages/ErrorPage';
 
 const Cart = React.lazy(() => import('./pages/Cart'));
 const Products = React.lazy(() => import('./pages/Products'));
@@ -27,7 +27,7 @@ function App() {
                         />
                         <Route path="/login" element={<Login />} />
                         <Route path="/users" element={<Users />} />
-                        <Route path="*" element={<FourZeroFour />} />
+                        <Route path="*" element={<ErrorPage />} />
                     </Routes>
                 </React.Suspense>
             </div>
