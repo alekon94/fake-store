@@ -9,9 +9,9 @@ export default function Header() {
             <nav className="row space-between">
                 <ul className="row nav">
                     <li>
-                        <NavLink to="/">Products</NavLink>
-                    </li>
-                    <li>
+                        <NavLink to="/">Main</NavLink>
+
+                        <NavLink to="/products">Products</NavLink>
                         <NavLink to="/cart">Cart</NavLink>
                         <NavLink to="/registration">Registration</NavLink>
                         <NavLink to="/login">Login</NavLink>

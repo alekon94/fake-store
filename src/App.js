@@ -3,14 +3,12 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/index';
 
-const Cart = React.lazy(() => import('./components/Pages/cart'));
-const Products = React.lazy(() => import('./components/Pages/products'));
-const Registration = React.lazy(() =>
-    import('./components/Pages/registration')
-);
-const Login = React.lazy(() => import('./components/Pages/login'));
-const Users = React.lazy(() => import('./components/Pages/users'));
-
+const Cart = React.lazy(() => import('./Pages/cart'));
+const Products = React.lazy(() => import('./Pages/products'));
+const Registration = React.lazy(() => import('./Pages/registration'));
+const Login = React.lazy(() => import('./Pages/login'));
+const Users = React.lazy(() => import('./Pages/users'));
+const Main = React.lazy(() => import('./Pages/main'));
 function App() {
     return (
         <Router>
@@ -19,7 +17,9 @@ function App() {
                 <React.Suspense>
                     <Routes>
                         <Route path="/cart" element={<Cart />} />
-                        <Route path="*" element={<Products />} />
+                        <Route path="*" element={<Main />} />
+                        <Route path="/products/*" element={<Products />} />
+
                         <Route
                             path="/registration"
                             element={<Registration />}
