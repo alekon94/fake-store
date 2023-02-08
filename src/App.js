@@ -2,14 +2,14 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/index';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages2/ErrorPage';
 
-const Cart = React.lazy(() => import('./pages/Cart'));
-const Products = React.lazy(() => import('./pages/Products'));
-const Registration = React.lazy(() => import('./pages/Registration'));
-const Login = React.lazy(() => import('./pages/Login'));
-const Users = React.lazy(() => import('./pages/Users'));
-const Main = React.lazy(() => import('./pages/Main'));
+const Cart = React.lazy(() => import('./pages2/Cart'));
+const Products = React.lazy(() => import('./pages2/Products'));
+const Registration = React.lazy(() => import('./pages2/Registration'));
+const Login = React.lazy(() => import('./pages2/Login'));
+const Users = React.lazy(() => import('./pages2/Users'));
+const Main = React.lazy(() => import('./pages2/Main'));
 function App() {
     return (
         <Router>
