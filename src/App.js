@@ -2,13 +2,14 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/index';
+import FourZeroFour from './pages/404';
 
-const Cart = React.lazy(() => import('./Pages/cart'));
-const Products = React.lazy(() => import('./Pages/products'));
-const Registration = React.lazy(() => import('./Pages/registration'));
-const Login = React.lazy(() => import('./Pages/login'));
-const Users = React.lazy(() => import('./Pages/users'));
-const Main = React.lazy(() => import('./Pages/main'));
+const Cart = React.lazy(() => import('./pages/Cart'));
+const Products = React.lazy(() => import('./pages/Products'));
+const Registration = React.lazy(() => import('./pages/Registration'));
+const Login = React.lazy(() => import('./pages/Login'));
+const Users = React.lazy(() => import('./pages/Users'));
+const Main = React.lazy(() => import('./pages/Main'));
 function App() {
     return (
         <Router>
@@ -17,7 +18,7 @@ function App() {
                 <React.Suspense>
                     <Routes>
                         <Route path="/cart" element={<Cart />} />
-                        <Route path="*" element={<Main />} />
+                        <Route exact path="/" element={<Main />} />
                         <Route path="/products/*" element={<Products />} />
 
                         <Route
@@ -26,8 +27,7 @@ function App() {
                         />
                         <Route path="/login" element={<Login />} />
                         <Route path="/users" element={<Users />} />
-
-                        <Route render={() => <h1>404</h1>} />
+                        <Route path="*" element={<FourZeroFour />} />
                     </Routes>
                 </React.Suspense>
             </div>

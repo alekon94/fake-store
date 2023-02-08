@@ -5,7 +5,6 @@ import * as S from './styled';
 export default function Header() {
     return (
         <S.Header className="Hello">
-            <S.Title>Hi</S.Title>
             <nav className="row space-between">
                 <ul className="row nav">
                     <li>
