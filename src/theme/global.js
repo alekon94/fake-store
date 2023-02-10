@@ -1,14 +1,26 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import fonts from './fonts';
+import propertyResponsive from './mixins/propertyResponsive';
+import sizes from './sizes';
 
 export default createGlobalStyle`
 ${reset}
 ${fonts}
+${sizes}
 :root {
   --header-color: ${({ theme }) => theme.colors.white};
   --color-gold: ${({ theme }) => theme.colors.gold};
   --color-silver: ${({ theme }) => theme.colors.silver};
+${propertyResponsive('--headerOffset', sizes.headerOffset)}
+${propertyResponsive('--contentPaddingX', sizes.contentPaddingX)}
+${propertyResponsive('--headerHeight', sizes.headerHeight)}
+${propertyResponsive('--innerWidth', sizes.innerWidth)}
+${propertyResponsive('--postWidth', sizes.postWidth)}
+
+
+
+
 }
 html {
     line-height: 1.15;
@@ -42,7 +54,7 @@ body {
     color: ${({ theme }) => theme.colors.brand};
     overflow-x: hidden;
     background: ${({ theme }) => theme.colors.white};
-    padding-top: var(--s-header-offset);
+    padding-top: var(--headerOffset);
     align-self: end;
     justify-content: stretch;
 }
