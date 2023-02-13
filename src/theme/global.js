@@ -46,7 +46,7 @@ body {
     margin: 0;
     font-size: 1.5rem;
     letter-spacing: 0.06rem;
-    font-family: "Harmond", sans-serif;
+    font-family: "LibreFranklin", sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 1.5rem;

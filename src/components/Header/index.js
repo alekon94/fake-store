@@ -1,23 +1,43 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Navigation from './Navigation';
 import * as S from './styled';
 
 export default function Header() {
-    return (
-        <S.Header className="Hello">
-            <nav className="row space-between">
-                <ul className="row nav">
-                    <li>
-                        <NavLink to="/">Main</NavLink>
+    const [scrollPos, setScrollPos] = useState(0);
+    const [isHide, setIsHide] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
-                        <NavLink to="/products">Products</NavLink>
-                        <NavLink to="/cart">Cart</NavLink>
-                        <NavLink to="/registration">Registration</NavLink>
-                        <NavLink to="/login">Login</NavLink>
-                        <NavLink to="/users">Users</NavLink>
-                    </li>
-                </ul>
-            </nav>
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollPos = window.pageYOffset;
+
+            if (window.pageYOffset > 1) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+            if (currentScrollPos > scrollPos) {
+                setIsHide(true);
+            } else {
+                setIsHide(false);
+            }
+            setScrollPos(currentScrollPos);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [scrollPos]);
+
+    return (
+        <S.Header
+            className={`${isScrolled ? 'is-scrolled' : ''} ${
+                isHide ? 'is-transform' : ''
+            }`}
+        >
+            <S.Container>
+                <Navigation />
+            </S.Container>
         </S.Header>
     );
 }
