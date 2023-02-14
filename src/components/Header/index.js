@@ -30,13 +30,9 @@ export default function Header() {
     }, [scrollPos]);
 
     return (
-        <S.Header
-            className={`${isScrolled ? 'is-scrolled' : ''} ${
-                isHide ? 'is-transform' : ''
-            }`}
-        >
+        <S.Header isScrolled={isScrolled} isHide={isHide}>
             <S.Container>
-                <Navigation />
+                <Navigation isScrolled={isScrolled} isHide={isHide} />
             </S.Container>
         </S.Header>
     );
