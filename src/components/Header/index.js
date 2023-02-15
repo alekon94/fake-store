@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import Navigation from './Navigation';
 import * as S from './styled';
@@ -28,11 +29,11 @@ export default function Header() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [scrollPos]);
-
+    const props = { isScrolled, isHide };
     return (
         <S.Header isScrolled={isScrolled} isHide={isHide}>
             <S.Container>
-                <Navigation isScrolled={isScrolled} isHide={isHide} />
+                <Navigation {...props} />
             </S.Container>
         </S.Header>
     );

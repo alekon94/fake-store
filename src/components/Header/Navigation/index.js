@@ -1,45 +1,122 @@
-import React from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useEffect, useState } from 'react';
+import useScrollLock from '../../../Hooks/useScrollLock';
 import VisuallyHidden from '../../VisuallyHidden';
 import * as S from './styled';
 import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
 import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
-export default function Navigation() {
+// eslint-disable-next-line react/prop-types
+export default function Navigation({ ...args }) {
+    const [showMobile, setShowMobile] = useState(false);
+    const { lockScroll, unlockScroll } = useScrollLock();
+    useEffect(() => {
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Escape' && showMobile === true) {
+                setShowMobile(!showMobile);
+                unlockScroll();
+            }
+        });
+        return () => {
+            window.removeEventListener('keydown', (e) => {
+                if (e.code === 'Escape' && showMobile === true) {
+                    setShowMobile(!showMobile);
+                    unlockScroll();
+                }
+            });
+        };
+    });
+    const handleButtonClick = () => {
+        console.log(showMobile);
+        setShowMobile(!showMobile);
+        if (showMobile === false) {
+            lockScroll();
+        } else {
+            unlockScroll();
+        }
+    };
     return (
         <S.Nav>
             <S.Main>
                 <S.List>
                     <S.Item>
-                        <S.NavMainLink to="/">Main</S.NavMainLink>
+                        <S.NavMainLink
+                            $isScrolled={args.isScrolled}
+                            $isHide={args.isHide}
+                            $showMobile={showMobile}
+                            to="/"
+                        >
+                            Main
+                        </S.NavMainLink>
                     </S.Item>
                     <S.Item>
-                        <S.NavMainLink to="/products">Products</S.NavMainLink>
+                        <S.NavMainLink
+                            $isScrolled={args.isScrolled}
+                            $isHide={args.isHide}
+                            to="/products"
+                        >
+                            Products
+                        </S.NavMainLink>
                     </S.Item>
                     <S.Item>
-                        <S.NavMainLink to="/cart">Cart</S.NavMainLink>
+                        <S.NavMainLink
+                            $isScrolled={args.isScrolled}
+                            $isHide={args.isHide}
+                            to="/cart"
+                        >
+                            Cart
+                        </S.NavMainLink>
                     </S.Item>
 
                     <S.Item>
-                        <S.NavMainLink to="/registration">
+                        <S.NavMainLink
+                            $isScrolled={args.isScrolled}
+                            $isHide={args.isHide}
+                            to="/registration"
+                        >
                             Registration
                         </S.NavMainLink>
                     </S.Item>
                     <S.Item>
-                        <S.NavMainLink to="/login">Login</S.NavMainLink>
+                        <S.NavMainLink
+                            $isScrolled={args.isScrolled}
+                            $isHide={args.isHide}
+                            to="/login"
+                        >
+                            Login
+                        </S.NavMainLink>
                     </S.Item>
                     <S.Item>
-                        <S.NavMainLink to="/users">Users</S.NavMainLink>
+                        <S.NavMainLink
+                            $isScrolled={args.isScrolled}
+                            $isHide={args.isHide}
+                            to="/users"
+                        >
+                            Users
+                        </S.NavMainLink>
                     </S.Item>
                 </S.List>
             </S.Main>
-            <S.Mobile>
-                <S.MobileButton>
-                    <S.MobileBurger />
+            <S.Mobile showMobile={showMobile}>
+                <S.MobileButton
+                    onClick={handleButtonClick}
+                    showMobile={showMobile}
+                    $isScrolled={args.isScrolled}
+                >
+                    <S.MobileBurger
+                        showMobile={showMobile}
+                        $isScrolled={args.isScrolled}
+                    />
                     <VisuallyHidden />
                 </S.MobileButton>
-                <S.MobileTitle>Menu</S.MobileTitle>
-                <S.MobileIcons>
-                    <S.IconsItem>
+                <S.MobileTitle
+                    showMobile={showMobile}
+                    $isScrolled={args.isScrolled}
+                >
+                    Menu
+                </S.MobileTitle>
+                <S.MobileIcons showMobile={showMobile}>
+                    <S.IconsItem showMobile={showMobile}>
                         <S.IconsLink to="/login">
                             <SearchIcon />
                         </S.IconsLink>
@@ -48,7 +125,7 @@ export default function Navigation() {
                         </S.IconsLink>
                     </S.IconsItem>
                 </S.MobileIcons>
-                <S.MobileList>
+                <S.MobileList showMobile={showMobile}>
                     <S.MobileItem>
                         <S.MobileLink to="/">Main</S.MobileLink>
                     </S.MobileItem>
@@ -71,3 +148,7 @@ export default function Navigation() {
         </S.Nav>
     );
 }
+// Navigation.propTypes = {
+//     iscrolled: PropTypes.number.isRequired,
+//     hide: PropTypes.number.isRequired,
+// };

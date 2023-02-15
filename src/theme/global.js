@@ -9,7 +9,7 @@ ${reset}
 ${fonts}
 ${sizes}
 :root {
-  --header-color: ${({ theme }) => theme.colors.white};
+  --header-color: ${({ theme }) => theme.colors.brand};
   --color-gold: ${({ theme }) => theme.colors.gold};
   --color-silver: ${({ theme }) => theme.colors.silver};
 ${propertyResponsive('--headerOffset', sizes.headerOffset)}
