@@ -50,43 +50,6 @@ export const Item = styled.li`
     margin-right: 3.75rem;
     position: relative;
 `;
-export const Mobile = styled.div`
-    display: flex;
-    align-items: center;
-    ${({ showMobile }) =>
-        showMobile
-            ? css`
-    display: flex;
-      overflow: auto;
-      margin-bottom: 5rem;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 20;
-      width: 100%;
-      height: 100vh;
-      padding: 6.25rem 0;
-      -webkit-backdrop-filter: blur(${pxToRem(10)});
-      backdrop-filter: blur(${pxToRem(10)});
-      background: -webkit-linear-gradient(
-        bottom,
-        rgba(36, 41, 52, 0.25),
-        rgba(36, 41, 52, 0.25)
-      );
-      background: linear-gradient(
-        0deg,
-        rgba(36, 41, 52, 0.25),
-        rgba(36, 41, 52, 0.25);`
-            : ''};
-    ${mediaBreakpointUp('lg')} {
-        display: none;
-    }
-`;
 
 export const MobileBurger = styled.span`
     width: 75%;
@@ -102,8 +65,8 @@ export const MobileBurger = styled.span`
     transition: opacity 0.1s linear;
     background-color: var(--header-color);
     transition: 0.2s;
-    ${({ showMobile }) =>
-        showMobile
+    ${({ $showMobile }) =>
+        $showMobile
             ? css`
                   opacity: 0;
               `
@@ -178,8 +141,8 @@ export const MobileButton = styled.button`
             transition: 0.2s;
         }
     }
-    ${({ showMobile }) =>
-        showMobile
+    ${({ $showMobile }) =>
+        $showMobile
             ? css`
                   margin: 0.9375rem 1rem 2.25rem auto;
                   top: 0%;
@@ -258,8 +221,8 @@ export const MobileTitle = styled.div`
                   color: ${({ theme }) => theme.colors.brand};
               `
             : ``}
-    ${({ showMobile }) =>
-        showMobile
+    ${({ $showMobile }) =>
+        $showMobile
             ? css`
                   display: block;
                   color: ${({ theme }) => theme.colors.white};
@@ -294,8 +257,8 @@ export const MobileIcons = styled.ul`
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    ${({ showMobile }) =>
-        showMobile
+    ${({ $showMobile }) =>
+        $showMobile
             ? css`
                   width: auto;
                   justify-content: center;
@@ -324,8 +287,8 @@ export const IconsItem = styled.li`
     &:last-child {
         display: flex;
     }
-    ${({ showMobile }) =>
-        showMobile
+    ${({ $showMobile }) =>
+        $showMobile
             ? css`
                   display: flex;
               `
@@ -343,12 +306,27 @@ export const IconsLink = styled(NavLink)`
     text-transform: uppercase;
     display: flex;
     position: relative;
+    svg {
+        stroke: var(--header-color);
+        fill: none;
+        ${({ $showMobile }) =>
+            $showMobile
+                ? css`
+                      stroke: ${({ theme }) => theme.colors.white};
+                      transition: 0.2s;
+                      &:hover {
+                          stroke: ${({ theme }) => theme.colors.grey};
+                          transition: 0.2s;
+                      }
+                  `
+                : ``}
+    }
 `;
 export const IconsIcon = styled(NavLink)`
     stroke: var(--header-color);
     fill: none;
-    ${({ showMobile }) =>
-        showMobile
+    ${({ $showMobile }) =>
+        $showMobile
             ? css`
                   stroke: ${({ theme }) => theme.colors.white};
                   transition: 0.2s;
@@ -366,8 +344,8 @@ export const MobileList = styled.ul`
     list-style-type: none;
     text-transform: uppercase;
     margin-top: ${pxToRem(83)};
-    ${({ showMobile }) =>
-        showMobile
+    ${({ $showMobile }) =>
+        $showMobile
             ? css`
                   display: block;
               `
@@ -394,5 +372,45 @@ export const MobileLink = styled(NavLink)`
     }
     ${mediaBreakpointUp('xl')} {
         font-size: 6.875rem;
+    }
+`;
+
+export const Mobile = styled.div`
+    display: flex;
+    align-items: center;
+    ${({ $showMobile }) =>
+        $showMobile
+            ? css`
+                  display: flex;
+                  overflow: auto;
+                  margin-bottom: 5rem;
+                  -webkit-box-orient: vertical;
+                  -webkit-box-direction: normal;
+                  -webkit-flex-direction: column;
+                  -ms-flex-direction: column;
+                  flex-direction: column;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  z-index: 20;
+                  width: 100%;
+                  height: 100vh;
+                  padding: 6.25rem 0;
+                  -webkit-backdrop-filter: blur(${pxToRem(10)});
+                  backdrop-filter: blur(${pxToRem(10)});
+                  background: -webkit-linear-gradient(
+                      bottom,
+                      rgba(36, 41, 52, 0.25),
+                      rgba(36, 41, 52, 0.25)
+                  );
+                  background: linear-gradient(
+                      0deg,
+                      rgba(36, 41, 52, 0.25),
+                      rgba(36, 41, 52, 0.25)
+                  );
+              `
+            : ''};
+    ${mediaBreakpointUp('lg')} {
+        display: none;
     }
 `;

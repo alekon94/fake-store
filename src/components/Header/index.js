@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
+import Bar from './Bar';
+import Logo from './Logo';
 import Navigation from './Navigation';
 import * as S from './styled';
 
@@ -34,6 +36,8 @@ export default function Header() {
         <S.Header isScrolled={isScrolled} isHide={isHide}>
             <S.Container>
                 <Navigation {...props} />
+                <Logo {...props} />
+                <Bar {...props} />
             </S.Container>
         </S.Header>
     );
