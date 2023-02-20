@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import mediaBreakpointUp from '../../../theme/mixins/mediaBreakpointUp';
 import pxToRem from '../../../theme/mixins/pxToRem';
+import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
+import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
 export const NavMainLink = styled(NavLink)`
     ${mediaBreakpointUp('lg')} {
@@ -12,27 +14,6 @@ export const NavMainLink = styled(NavLink)`
             transition: 0.2s;
             color: ${({ theme }) => theme.colors.grey};
         }
-    }
-
-    ${({ $isScrolled }) =>
-        $isScrolled
-            ? css`
-                  background-color: ${({ theme }) => theme.colors.white};
-                  color: ${({ theme }) => theme.colors.brand};
-                  &:hover {
-                      color: ${({ theme }) => theme.colors.grey};
-                      transition: 0.2s;
-                  }
-              `
-            : ''}
-`;
-
-export const Nav = styled.nav`
-    width: 30%;
-    -webkit-box-pack: end;
-    justify-content: flex-end;
-    &.is-scroll ${NavMainLink} {
-        color: ${({ theme }) => theme.colors.brand};
     }
 `;
 
@@ -65,23 +46,7 @@ export const MobileBurger = styled.span`
     transition: opacity 0.1s linear;
     background-color: var(--header-color);
     transition: 0.2s;
-    ${({ $showMobile }) =>
-        $showMobile
-            ? css`
-                  opacity: 0;
-              `
-            : ``}
-    ${({ isScrolled }) =>
-        isScrolled
-            ? css`
-                  background-color: ${({ theme }) => theme.colors.brand};
-                  transition: 0.2s;
-                  &:hover {
-                      background-color: ${({ theme }) => theme.colors.grey};
-                      transition: 0.2s;
-                  }
-              `
-            : ``}
+
     &:hover {
         background-color: ${({ theme }) => theme.colors.grey};
         transition: 0.2s;
@@ -141,100 +106,11 @@ export const MobileButton = styled.button`
             transition: 0.2s;
         }
     }
-    ${({ $showMobile }) =>
-        $showMobile
-            ? css`
-                  margin: 0.9375rem 1rem 2.25rem auto;
-                  top: 0%;
-                  &::before {
-                      transform: translateY(-50%) rotate(45deg);
-                      top: 50%;
-                      width: 100%;
-                      background-color: ${({ theme }) => theme.colors.white};
-                      content: '';
-                      height: 0.125rem;
-                      position: absolute;
-                      left: 0;
-                      border-radius: 0.1875rem;
-                      transition: transform 0.2s, width 0.2s, height 0.2s,
-                          -webkit-transform 0.2s;
-                  }
-                  &::after {
-                      transform: translateY(-50%) rotate(-45deg);
-                      top: 50%;
-                      width: 100%;
-                      background-color: ${({ theme }) => theme.colors.white};
-                      bottom: 0%;
-                      content: '';
-                      height: 0.125rem;
-                      position: absolute;
-                      left: 0;
-                      border-radius: 0.1875rem;
-                      transition: transform 0.2s, width 0.2s, height 0.2s,
-                          -webkit-transform 0.2s;
-                  }
-                  &:hover {
-                      &::before {
-                          background-color: ${({ theme }) => theme.colors.grey};
-                          transition: 0.2s;
-                      }
-
-                      &::after {
-                          background-color: ${({ theme }) => theme.colors.grey};
-                          transition: 0.2s;
-                      }
-                  }
-              `
-            : ''}
-    ${({ isScrolled }) =>
-        isScrolled
-            ? css`
-                  &::before {
-                      background-color: ${({ theme }) => theme.colors.brand};
-                  }
-                  &::after {
-                      background-color: ${({ theme }) => theme.colors.brand};
-                  }
-                  &:hover {
-                      &::before {
-                          background-color: ${({ theme }) => theme.colors.grey};
-                          transition: 0.2s;
-                      }
-                      &::after {
-                          background-color: ${({ theme }) => theme.colors.grey};
-                          transition: 0.2s;
-                      }
-                      ${MobileBurger} {
-                          background-color: ${({ theme }) => theme.colors.grey};
-                          transition: 0.2s;
-                      }
-                  }
-              `
-            : ''}
 `;
 export const MobileTitle = styled.div`
     display: none;
     text-align: center;
-    ${({ isScrolled }) =>
-        isScrolled
-            ? css`
-                  color: ${({ theme }) => theme.colors.brand};
-              `
-            : ``}
-    ${({ $showMobile }) =>
-        $showMobile
-            ? css`
-                  display: block;
-                  color: ${({ theme }) => theme.colors.white};
-                  margin-bottom: 2.5rem;
-                  margin-left: 0;
-                  font-size: 1rem;
-                  opacity: 0.7;
-                  font-weight: 300;
-                  font-style: normal;
-                  margin-top: -3.2rem;
-              `
-            : ``}
+
     ${mediaBreakpointUp('md')} {
         font-size: 0.75rem;
         margin-left: 0.9375rem;
@@ -257,16 +133,7 @@ export const MobileIcons = styled.ul`
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    ${({ $showMobile }) =>
-        $showMobile
-            ? css`
-                  width: auto;
-                  justify-content: center;
-                  grid-gap: 1rem;
-                  gap: 1rem;
-                  display: flex;
-              `
-            : ``}
+
     ${mediaBreakpointUp('sm')} {
         width: auto;
     }
@@ -287,12 +154,7 @@ export const IconsItem = styled.li`
     &:last-child {
         display: flex;
     }
-    ${({ $showMobile }) =>
-        $showMobile
-            ? css`
-                  display: flex;
-              `
-            : ``}
+
     ${mediaBreakpointUp('sm')} {
         display: flex;
     }
@@ -302,40 +164,23 @@ export const IconsItem = styled.li`
         }
     }
 `;
+export const Basket = styled(BasketIcon)`
+    stroke: var(--header-color);
+    fill: none;
+`;
+export const Search = styled(SearchIcon)`
+    stroke: var(--header-color);
+    fill: none;
+`;
+
 export const IconsLink = styled(NavLink)`
     text-transform: uppercase;
     display: flex;
     position: relative;
-    svg {
-        stroke: var(--header-color);
-        fill: none;
-        ${({ $showMobile }) =>
-            $showMobile
-                ? css`
-                      stroke: ${({ theme }) => theme.colors.white};
-                      transition: 0.2s;
-                      &:hover {
-                          stroke: ${({ theme }) => theme.colors.grey};
-                          transition: 0.2s;
-                      }
-                  `
-                : ``}
-    }
 `;
 export const IconsIcon = styled(NavLink)`
     stroke: var(--header-color);
     fill: none;
-    ${({ $showMobile }) =>
-        $showMobile
-            ? css`
-                  stroke: ${({ theme }) => theme.colors.white};
-                  transition: 0.2s;
-                  &:hover {
-                      stroke: ${({ theme }) => theme.colors.grey};
-                      transition: 0.2s;
-                  }
-              `
-            : ``}
 `;
 export const MobileList = styled.ul`
     display: none;
@@ -344,12 +189,6 @@ export const MobileList = styled.ul`
     list-style-type: none;
     text-transform: uppercase;
     margin-top: ${pxToRem(83)};
-    ${({ $showMobile }) =>
-        $showMobile
-            ? css`
-                  display: block;
-              `
-            : ``}
 `;
 export const MobileItem = styled.li`
     margin-bottom: 3.125rem;
@@ -378,39 +217,188 @@ export const MobileLink = styled(NavLink)`
 export const Mobile = styled.div`
     display: flex;
     align-items: center;
-    ${({ $showMobile }) =>
-        $showMobile
-            ? css`
-                  display: flex;
-                  overflow: auto;
-                  margin-bottom: 5rem;
-                  -webkit-box-orient: vertical;
-                  -webkit-box-direction: normal;
-                  -webkit-flex-direction: column;
-                  -ms-flex-direction: column;
-                  flex-direction: column;
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  z-index: 20;
-                  width: 100%;
-                  height: 100vh;
-                  padding: 6.25rem 0;
-                  -webkit-backdrop-filter: blur(${pxToRem(10)});
-                  backdrop-filter: blur(${pxToRem(10)});
-                  background: -webkit-linear-gradient(
-                      bottom,
-                      rgba(36, 41, 52, 0.25),
-                      rgba(36, 41, 52, 0.25)
-                  );
-                  background: linear-gradient(
-                      0deg,
-                      rgba(36, 41, 52, 0.25),
-                      rgba(36, 41, 52, 0.25)
-                  );
-              `
-            : ''};
+
     ${mediaBreakpointUp('lg')} {
         display: none;
     }
+`;
+export const Nav = styled.nav`
+    width: 30%;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    ${({ $showMobile }) =>
+        $showMobile &&
+        css`
+            ${Mobile} {
+                display: flex;
+                overflow: auto;
+                margin-bottom: 5rem;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 20;
+                width: 100%;
+                height: 100vh;
+                padding: 6.25rem 0;
+                -webkit-backdrop-filter: blur(${pxToRem(10)});
+                backdrop-filter: blur(${pxToRem(10)});
+                background: -webkit-linear-gradient(
+                    bottom,
+                    rgba(36, 41, 52, 0.25),
+                    rgba(36, 41, 52, 0.25)
+                );
+                background: linear-gradient(
+                    0deg,
+                    rgba(36, 41, 52, 0.25),
+                    rgba(36, 41, 52, 0.25)
+                );
+            }
+            ${MobileList} {
+            }
+            ${MobileButton} {
+                margin: 0.9375rem 1rem 2.25rem auto;
+                top: 0%;
+                &::before {
+                    transform: translateY(-50%) rotate(45deg);
+                    top: 50%;
+                    width: 100%;
+                    background-color: ${({ theme }) => theme.colors.white};
+                    content: '';
+                    height: 0.125rem;
+                    position: absolute;
+                    left: 0;
+                    border-radius: 0.1875rem;
+                    transition: transform 0.2s, width 0.2s, height 0.2s,
+                        -webkit-transform 0.2s;
+                }
+                &::after {
+                    transform: translateY(-50%) rotate(-45deg);
+                    top: 50%;
+                    width: 100%;
+                    background-color: ${({ theme }) => theme.colors.white};
+                    bottom: 0%;
+                    content: '';
+                    height: 0.125rem;
+                    position: absolute;
+                    left: 0;
+                    border-radius: 0.1875rem;
+                    transition: transform 0.2s, width 0.2s, height 0.2s,
+                        -webkit-transform 0.2s;
+                }
+                &:hover {
+                    &::before {
+                        background-color: ${({ theme }) => theme.colors.grey};
+                        transition: 0.2s;
+                    }
+
+                    &::after {
+                        background-color: ${({ theme }) => theme.colors.grey};
+                        transition: 0.2s;
+                    }
+                }
+            }
+            ${MobileTitle} {
+                display: block;
+                color: ${({ theme }) => theme.colors.white};
+                margin-bottom: 2.5rem;
+                margin-left: 0;
+                font-size: 1rem;
+                opacity: 0.7;
+                font-weight: 300;
+                font-style: normal;
+                margin-top: -3.2rem;
+            }
+            ${MobileIcons} {
+                width: auto;
+                justify-content: center;
+                grid-gap: 1rem;
+                gap: 1rem;
+                display: flex;
+            }
+            ${MobileList} {
+                display: block;
+            }
+            ${MobileBurger} {
+                opacity: 0;
+            }
+
+            ${IconsItem} {
+                stroke: ${({ theme }) => theme.colors.white};
+                transition: 0.2s;
+                display: flex;
+
+                &:hover {
+                    stroke: ${({ theme }) => theme.colors.grey};
+                    transition: 0.2s;
+                }
+            }
+            ${Search} {
+                stroke: ${({ theme }) => theme.colors.white};
+                transition: 0.2s;
+                &:hover {
+                    stroke: ${({ theme }) => theme.colors.grey};
+                    transition: 0.2s;
+                }
+            }
+            ${Basket} {
+                stroke: ${({ theme }) => theme.colors.white};
+                transition: 0.2s;
+                &:hover {
+                    stroke: ${({ theme }) => theme.colors.grey};
+                    transition: 0.2s;
+                }
+            }
+        `}
+    ${({ $isScrolled }) =>
+        $isScrolled &&
+        css`
+            ${NavMainLink} {
+                background-color: ${({ theme }) => theme.colors.white};
+                color: ${({ theme }) => theme.colors.brand};
+                &:hover {
+                    color: ${({ theme }) => theme.colors.grey};
+                    transition: 0.2s;
+                }
+            }
+            ${MobileBurger} {
+                background-color: ${({ theme }) => theme.colors.brand};
+                transition: 0.2s;
+                &:hover {
+                    background-color: ${({ theme }) => theme.colors.grey};
+                    transition: 0.2s;
+                }
+            }
+            ${IconsItem} {
+            }
+            ${MobileButton} {
+                &::before {
+                    background-color: ${({ theme }) => theme.colors.brand};
+                }
+                &::after {
+                    background-color: ${({ theme }) => theme.colors.brand};
+                }
+                &:hover {
+                    &::before {
+                        background-color: ${({ theme }) => theme.colors.grey};
+                        transition: 0.2s;
+                    }
+                    &::after {
+                        background-color: ${({ theme }) => theme.colors.grey};
+                        transition: 0.2s;
+                    }
+                    ${MobileBurger} {
+                        background-color: ${({ theme }) => theme.colors.grey};
+                        transition: 0.2s;
+                    }
+                }
+            }
+            ${MobileTitle} {
+                color: ${({ theme }) => theme.colors.brand};
+            }
+        `}
 `;

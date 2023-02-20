@@ -12,19 +12,16 @@ export const Header = styled.header`
     height: var(--headerOffset);
     background-color: ${({ isScrolled }) => (isScrolled ? '' : '')};
     color: var(--header-color, ${({ theme }) => theme.colors.brand});
-    transition: ${({ isScrolled }) =>
-        isScrolled
-            ? 'background-color 0.3s ease, color 0.3s ease, transform 0.3s linear, -webkit-transform 0.3s linear;'
-            : 'background-color 0.3s ease, color 0.3s ease, transform 0.3s linear, -webkit-transform 0.3s linear'};
+    transition: background-color 0.3s ease, color 0.3s ease,
+        transform 0.3s linear, -webkit-transform 0.3s linear;
     ${mediaBreakpointUp('md')} {
         height: var(--headerOffset);
     }
     ${({ isScrolled }) =>
-        isScrolled
-            ? css`
-                  background-color: ${({ theme }) => theme.colors.white};
-              `
-            : ''}
+        isScrolled &&
+        css`
+            background-color: ${({ theme }) => theme.colors.white};
+        `}
 `;
 export const Container = styled.div`
     width: 100%;

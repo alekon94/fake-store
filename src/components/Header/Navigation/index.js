@@ -1,13 +1,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+
 import useScrollLock from '../../../Hooks/useScrollLock';
 import VisuallyHidden from '../../VisuallyHidden';
+
 import * as S from './styled';
 import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
 import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
-// eslint-disable-next-line react/prop-types
-export default function Navigation({ ...args }) {
+export default function Navigation({ isScrolled }) {
     const [showMobile, setShowMobile] = useState(false);
     const { lockScroll, unlockScroll } = useScrollLock();
     const handleEscKey = (event) => {
@@ -38,66 +40,38 @@ export default function Navigation({ ...args }) {
         setShowMobile(!showMobile);
     };
     return (
-        <S.Nav>
+        <S.Nav $isScrolled={isScrolled} $showMobile={showMobile}>
             <S.Main>
                 <S.List>
                     <S.Item>
-                        <S.NavMainLink
-                            $isScrolled={args.isScrolled}
-                            $showMobile={showMobile}
-                            to="/"
-                        >
-                            Main
-                        </S.NavMainLink>
+                        <S.NavMainLink to="/">Main</S.NavMainLink>
                     </S.Item>
                     <S.Item>
-                        <S.NavMainLink
-                            $isScrolled={args.isScrolled}
-                            to="/products"
-                        >
-                            Products
-                        </S.NavMainLink>
+                        <S.NavMainLink to="/products">Products</S.NavMainLink>
                     </S.Item>
 
                     <S.Item>
-                        <S.NavMainLink
-                            $isScrolled={args.isScrolled}
-                            to="/users"
-                        >
-                            Users
-                        </S.NavMainLink>
+                        <S.NavMainLink to="/users">Users</S.NavMainLink>
                     </S.Item>
                 </S.List>
             </S.Main>
-            <S.Mobile $showMobile={showMobile}>
-                <S.MobileButton
-                    onClick={handleButtonClick}
-                    $showMobile={showMobile}
-                    $isScrolled={args.isScrolled}
-                >
-                    <S.MobileBurger
-                        $showMobile={showMobile}
-                        $isScrolled={args.isScrolled}
-                    />
+            <S.Mobile>
+                <S.MobileButton onClick={handleButtonClick}>
+                    <S.MobileBurger />
                     <VisuallyHidden />
                 </S.MobileButton>
-                <S.MobileTitle
-                    $showMobile={showMobile}
-                    $isScrolled={args.isScrolled}
-                >
-                    Menu
-                </S.MobileTitle>
-                <S.MobileIcons $showMobile={showMobile}>
-                    <S.IconsItem $showMobile={showMobile}>
-                        <S.IconsLink $showMobile={showMobile} to="/login">
+                <S.MobileTitle>Menu</S.MobileTitle>
+                <S.MobileIcons>
+                    <S.IconsItem>
+                        <S.IconsLink to="/login">
                             <SearchIcon />
                         </S.IconsLink>
-                        <S.IconsLink $showMobile={showMobile} to="/cart">
+                        <S.IconsLink to="/cart">
                             <BasketIcon />
                         </S.IconsLink>
                     </S.IconsItem>
                 </S.MobileIcons>
-                <S.MobileList $showMobile={showMobile}>
+                <S.MobileList>
                     <S.MobileItem>
                         <S.MobileLink to="/">Main</S.MobileLink>
                     </S.MobileItem>
@@ -120,7 +94,6 @@ export default function Navigation({ ...args }) {
         </S.Nav>
     );
 }
-// Navigation.propTypes = {
-//     iscrolled: PropTypes.number.isRequired,
-//     hide: PropTypes.number.isRequired,
-// };
+Navigation.propTypes = {
+    isScrolled: PropTypes.bool.isRequired,
+};

@@ -1,13 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import mediaBreakpointUp from '../../../theme/mixins/mediaBreakpointUp';
+import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
+import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
-export const Bar = styled.div`
-    display: flex;
-    -webkit-box-pack: end;
-    justify-content: flex-end;
-    width: 30%;
-`;
 export const BarIcons = styled.ul`
     display: -webkit-box;
     display: -webkit-flex;
@@ -59,40 +55,46 @@ export const IconsLink = styled(NavLink)`
     &:hover {
         stroke: ${({ theme }) => theme.colors.grey};
         transition: 0.2s;
-        ${({ $isScrolled }) =>
-            $isScrolled
-                ? css`
-                      color: ${({ theme }) => theme.colors.grey};
-                      transition: 0.2s;
-                  `
-                : ''}
     }
-    ${({ $isScrolled }) =>
-        $isScrolled
-            ? css`
-                  color: ${({ theme }) => theme.colors.brand};
-              `
-            : ''}
-    svg {
-        stroke: var(--header-color);
-        fill: none;
+`;
 
-        &:hover {
-            stroke: ${({ theme }) => theme.colors.grey};
-            transition: 0.2s;
-            ${({ $isScrolled }) =>
-                $isScrolled
-                    ? css`
-                          stroke: ${({ theme }) => theme.colors.grey};
-                          transition: 0.2s;
-                      `
-                    : ''}
-        }
-        ${({ $isScrolled }) =>
-            $isScrolled
-                ? css`
-                      stroke: ${({ theme }) => theme.colors.brand};
-                  `
-                : ''}
+export const Basket = styled(BasketIcon)`
+    stroke: var(--header-color);
+    fill: none;
+
+    &:hover {
+        stroke: ${({ theme }) => theme.colors.grey};
+        transition: 0.2s;
     }
+`;
+export const Search = styled(SearchIcon)`
+    stroke: var(--header-color);
+    fill: none;
+
+    &:hover {
+        stroke: ${({ theme }) => theme.colors.grey};
+        transition: 0.2s;
+    }
+`;
+export const Bar = styled.div`
+    display: flex;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    width: 30%;
+    ${({ $isScrolled }) =>
+        $isScrolled &&
+        css`
+            color: ${({ theme }) => theme.colors.brand};
+            ${IconsLink} {
+                color: ${({ theme }) => theme.colors.brand};
+                &:hover {
+                }
+            }
+            ${Search} {
+                stroke: ${({ theme }) => theme.colors.brand};
+            }
+            ${Basket} {
+                stroke: ${({ theme }) => theme.colors.brand};
+            }
+        `}
 `;

@@ -12,32 +12,31 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const currentScrollPos = window.pageYOffset;
-
             if (window.pageYOffset > 1) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
             }
-            if (currentScrollPos > scrollPos) {
+            if (window.pageYOffset > scrollPos) {
                 setIsHide(true);
             } else {
                 setIsHide(false);
             }
-            setScrollPos(currentScrollPos);
+            setScrollPos(window.pageYOffset);
         };
+
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [scrollPos]);
-    const props = { isScrolled, isHide };
+
     return (
         <S.Header isScrolled={isScrolled} isHide={isHide}>
             <S.Container>
-                <Navigation {...props} />
-                <Logo {...props} />
-                <Bar {...props} />
+                <Navigation isScrolled={isScrolled} />
+                <Logo isScrolled={isScrolled} isHide={isHide} />
+                <Bar isScrolled={isScrolled} />
             </S.Container>
         </S.Header>
     );

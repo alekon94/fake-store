@@ -1,29 +1,28 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import * as S from './styled';
-import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
-import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
-export default function Bar({ ...args }) {
+export default function Bar({ isScrolled }) {
     return (
-        <S.Bar>
-            <S.BarIcons $isScrolled={args.isScrolled}>
-                <S.IconsItem $isScrolled={args.isScrolled}>
-                    <S.IconsLink $isScrolled={args.isScrolled} to="/login">
-                        login
+        <S.Bar $isScrolled={isScrolled}>
+            <S.BarIcons>
+                <S.IconsItem>
+                    <S.IconsLink to="/login">login</S.IconsLink>
+                </S.IconsItem>
+                <S.IconsItem>
+                    <S.IconsLink to="/search">
+                        <S.Search />
                     </S.IconsLink>
                 </S.IconsItem>
-                <S.IconsItem $isScrolled={args.isScrolled}>
-                    <S.IconsLink $isScrolled={args.isScrolled} to="/search">
-                        <SearchIcon />
-                    </S.IconsLink>
-                </S.IconsItem>
-                <S.IconsItem $isScrolled={args.isScrolled}>
-                    <S.IconsLink $isScrolled={args.isScrolled} to="/cart">
-                        <BasketIcon />
+                <S.IconsItem>
+                    <S.IconsLink to="/cart">
+                        <S.Basket />
                     </S.IconsLink>
                 </S.IconsItem>
             </S.BarIcons>
         </S.Bar>
     );
 }
+Bar.propTypes = {
+    isScrolled: PropTypes.bool.isRequired,
+};
