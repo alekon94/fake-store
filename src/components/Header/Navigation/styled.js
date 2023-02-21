@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+
 import mediaBreakpointUp from '../../../theme/mixins/mediaBreakpointUp';
 import pxToRem from '../../../theme/mixins/pxToRem';
 import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
@@ -382,6 +383,19 @@ export const Nav = styled.nav`
                 &::after {
                     background-color: ${({ theme }) => theme.colors.brand};
                 }
+
+                ${({ $showMobile }) =>
+                    $showMobile &&
+                    css`
+                        &::before {
+                            background-color: ${({ theme }) =>
+                                theme.colors.white};
+                        }
+                        &::after {
+                            background-color: ${({ theme }) =>
+                                theme.colors.white};
+                        }
+                    `}
                 &:hover {
                     &::before {
                         background-color: ${({ theme }) => theme.colors.grey};
@@ -397,8 +411,8 @@ export const Nav = styled.nav`
                     }
                 }
             }
-            ${MobileTitle} {
+            /* ${MobileTitle} {
                 color: ${({ theme }) => theme.colors.brand};
-            }
+            } */
         `}
 `;
