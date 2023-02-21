@@ -1,6 +1,7 @@
+import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import mediaBreakpointUp from '../../../theme/mixins/mediaBreakpointUp';
+
 import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
 import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
@@ -51,6 +52,7 @@ export const IconsLink = styled(NavLink)`
     text-transform: uppercase;
     display: flex;
     color: inherit;
+    transition: 0.2s;
 
     &:hover {
         stroke: ${({ theme }) => theme.colors.grey};
@@ -61,6 +63,7 @@ export const IconsLink = styled(NavLink)`
 export const Basket = styled(BasketIcon)`
     stroke: var(--header-color);
     fill: none;
+    transition: 0.2s;
 
     &:hover {
         stroke: ${({ theme }) => theme.colors.grey};
@@ -70,6 +73,7 @@ export const Basket = styled(BasketIcon)`
 export const Search = styled(SearchIcon)`
     stroke: var(--header-color);
     fill: none;
+    transition: 0.2s;
 
     &:hover {
         stroke: ${({ theme }) => theme.colors.grey};
@@ -81,20 +85,25 @@ export const Bar = styled.div`
     -webkit-box-pack: end;
     justify-content: flex-end;
     width: 30%;
+
     ${({ $isScrolled }) =>
         $isScrolled &&
         css`
-            color: ${({ theme }) => theme.colors.brand};
+            color: var(--header-color);
+            transition: 0.2s;
+
             ${IconsLink} {
-                color: ${({ theme }) => theme.colors.brand};
+                color: var(--header-color);
+                transition: 0.2s;
+
                 &:hover {
                 }
             }
             ${Search} {
-                stroke: ${({ theme }) => theme.colors.brand};
+                transition: 0.2s;
             }
             ${Basket} {
-                stroke: ${({ theme }) => theme.colors.brand};
+                transition: 0.2s;
             }
         `}
 `;

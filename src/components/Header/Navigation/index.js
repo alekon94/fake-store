@@ -1,11 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import useScrollLock from '@Hooks/useScrollLock';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
-import useScrollLock from '../../../Hooks/useScrollLock';
 import VisuallyHidden from '../../VisuallyHidden';
-import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
-import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 import * as S from './styled';
 
 export default function Navigation({ isScrolled }) {
@@ -63,12 +61,12 @@ export default function Navigation({ isScrolled }) {
                 <S.MobileIcons>
                     <S.IconsItem>
                         <S.IconsLink to="/login">
-                            <SearchIcon />
+                            <S.Search />
                         </S.IconsLink>
                     </S.IconsItem>
                     <S.IconsItem>
                         <S.IconsLink to="/cart">
-                            <BasketIcon />
+                            <S.Basket />
                         </S.IconsLink>
                     </S.IconsItem>
                 </S.MobileIcons>

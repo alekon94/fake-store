@@ -1,15 +1,16 @@
+import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
+import pxToRem from '@theme/mixins/pxToRem';
 import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import mediaBreakpointUp from '../../../theme/mixins/mediaBreakpointUp';
-import pxToRem from '../../../theme/mixins/pxToRem';
 import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
 import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
 export const NavMainLink = styled(NavLink)`
     ${mediaBreakpointUp('lg')} {
         text-transform: uppercase;
-        color: ${({ theme }) => theme.colors.brand};
+        color: var(--header-color);
+        transition: 0.2s;
 
         &:hover {
             transition: 0.2s;
@@ -166,11 +167,11 @@ export const IconsItem = styled.li`
     }
 `;
 export const Basket = styled(BasketIcon)`
-    stroke: var(--header-color);
+    stroke: ${({ theme }) => theme.colors.white};
     fill: none;
 `;
 export const Search = styled(SearchIcon)`
-    stroke: var(--header-color);
+    stroke: ${({ theme }) => theme.colors.white};
     fill: none;
 `;
 
@@ -268,7 +269,7 @@ export const Nav = styled.nav`
                     transform: translateY(-50%) rotate(45deg);
                     top: 50%;
                     width: 100%;
-                    background-color: ${({ theme }) => theme.colors.white};
+                    background-color: var(--header-color);
                     content: '';
                     height: 0.125rem;
                     position: absolute;
@@ -281,7 +282,7 @@ export const Nav = styled.nav`
                     transform: translateY(-50%) rotate(-45deg);
                     top: 50%;
                     width: 100%;
-                    background-color: ${({ theme }) => theme.colors.white};
+                    background-color: var(--header-color);
                     bottom: 0%;
                     content: '';
                     height: 0.125rem;
@@ -329,7 +330,7 @@ export const Nav = styled.nav`
             }
 
             ${IconsItem} {
-                stroke: ${({ theme }) => theme.colors.white};
+                stroke: var(--header-color);
                 transition: 0.2s;
                 display: flex;
 
@@ -339,7 +340,6 @@ export const Nav = styled.nav`
                 }
             }
             ${Search} {
-                stroke: ${({ theme }) => theme.colors.white};
                 transition: 0.2s;
                 &:hover {
                     stroke: ${({ theme }) => theme.colors.grey};
@@ -347,7 +347,6 @@ export const Nav = styled.nav`
                 }
             }
             ${Basket} {
-                stroke: ${({ theme }) => theme.colors.white};
                 transition: 0.2s;
                 &:hover {
                     stroke: ${({ theme }) => theme.colors.grey};
@@ -367,7 +366,6 @@ export const Nav = styled.nav`
                 }
             }
             ${MobileBurger} {
-                background-color: ${({ theme }) => theme.colors.brand};
                 transition: 0.2s;
                 &:hover {
                     background-color: ${({ theme }) => theme.colors.grey};
@@ -377,13 +375,6 @@ export const Nav = styled.nav`
             ${IconsItem} {
             }
             ${MobileButton} {
-                &::before {
-                    background-color: ${({ theme }) => theme.colors.brand};
-                }
-                &::after {
-                    background-color: ${({ theme }) => theme.colors.brand};
-                }
-
                 ${({ $showMobile }) =>
                     $showMobile &&
                     css`

@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+
 import fonts from './fonts';
 import propertyResponsive from './mixins/propertyResponsive';
 import sizes from './sizes';
@@ -9,7 +10,7 @@ ${reset}
 ${fonts}
 ${sizes}
 :root {
-  --header-color: ${({ theme }) => theme.colors.brand};
+  --header-color: ${({ theme }) => theme.colors.white};
   --color-gold: ${({ theme }) => theme.colors.gold};
   --color-silver: ${({ theme }) => theme.colors.silver};
 ${propertyResponsive('--headerOffset', sizes.headerOffset)}

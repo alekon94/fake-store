@@ -1,5 +1,5 @@
+import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import styled, { css } from 'styled-components';
-import mediaBreakpointUp from '../../theme/mixins/mediaBreakpointUp';
 
 export const Header = styled.header`
     transform: ${({ isHide }) =>
@@ -20,6 +20,8 @@ export const Header = styled.header`
     ${({ isScrolled }) =>
         isScrolled &&
         css`
+            --header-color: ${({ theme }) => theme.colors.brand};
+
             background-color: ${({ theme }) => theme.colors.white};
         `}
 `;
