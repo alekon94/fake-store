@@ -38,7 +38,11 @@ html {
     padding: 0;
     box-sizing: border-box;
 }
-
+#root {
+      display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
 body {
     margin: 0;
     display: flex;
@@ -58,6 +62,8 @@ body {
     padding-top: var(--headerOffset);
     align-self: end;
     justify-content: stretch;
+    height: 100%;
+
 }
 
 

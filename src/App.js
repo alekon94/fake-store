@@ -1,11 +1,14 @@
 import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+
+import './App.css';
+import Footer from './components/Footer/index';
 import Header from './components/Header/index';
+import Page from './components/Page';
 import ErrorPage from './pages/ErrorPage';
-import baseTheme from './theme/theme';
 import GlobalStyles from './theme/global';
+import baseTheme from './theme/theme';
 
 const Cart = React.lazy(() => import('./pages/Cart'));
 const Products = React.lazy(() => import('./pages/Products'));
@@ -21,21 +24,25 @@ function App() {
                 <GlobalStyles />
 
                 <Header />
-                <React.Suspense>
-                    <Routes>
-                        <Route path="/cart" element={<Cart />} />
-                        <Route exact path="/" element={<Main />} />
-                        <Route path="/products/*" element={<Products />} />
+                <Page>
+                    <React.Suspense>
+                        <Routes>
+                            <Route path="/cart" element={<Cart />} />
+                            <Route exact path="/" element={<Main />} />
+                            <Route path="/products/*" element={<Products />} />
 
-                        <Route
-                            path="/registration"
-                            element={<Registration />}
-                        />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/users" element={<Users />} />
-                        <Route path="*" element={<ErrorPage />} />
-                    </Routes>
-                </React.Suspense>
+                            <Route
+                                path="/registration"
+                                element={<Registration />}
+                            />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/users" element={<Users />} />
+                            <Route path="*" element={<ErrorPage />} />
+                        </Routes>
+                    </React.Suspense>
+                </Page>
+
+                <Footer />
             </Router>
         </ThemeProvider>
     );

@@ -9,6 +9,7 @@ module.exports = {
             '@theme': path.resolve(__dirname, 'src/theme'),
             '@Hooks': path.resolve(__dirname, 'src/Hooks'),
             '@So_on': path.resolve(__dirname, 'src/so_on'),
+            '@assets': path.resolve(__dirname, 'src/assets'),
         },
     },
 };
