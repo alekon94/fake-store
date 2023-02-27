@@ -1,5 +1,5 @@
-import * as B from '@Components/Button/styled';
-import * as F from '@Components/Field/styled';
+import * as B from '@components/Button/styled';
+import * as F from '@components/Field/styled';
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import styled from 'styled-components';
 

@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import useScrollLock from '@Hooks/useScrollLock';
+import VisuallyHidden from '@components/VisuallyHidden';
+import useScrollLock from '@hooks/useScrollLock';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
-import VisuallyHidden from '../../VisuallyHidden';
 import * as S from './styled';
 
 export default function Navigation({ isScrolled }) {

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import * as F from '@Components/Field/styled';
+import * as F from '@components/Field/styled';
 import React from 'react';
 
 import * as S from './styled';

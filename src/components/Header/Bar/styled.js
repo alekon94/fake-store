@@ -91,19 +91,5 @@ export const Bar = styled.div`
         css`
             color: var(--header-color);
             transition: 0.2s;
-
-            ${IconsLink} {
-                color: var(--header-color);
-                transition: 0.2s;
-
-                &:hover {
-                }
-            }
-            ${Search} {
-                transition: 0.2s;
-            }
-            ${Basket} {
-                transition: 0.2s;
-            }
         `}
 `;
