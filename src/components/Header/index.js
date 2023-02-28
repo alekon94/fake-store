@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import Bar from './Bar';
 import Logo from './Logo';
 import Navigation from './Navigation';
@@ -12,16 +13,8 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.pageYOffset > 1) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
-            if (window.pageYOffset > scrollPos) {
-                setIsHide(true);
-            } else {
-                setIsHide(false);
-            }
+            setIsScrolled(window.pageYOffset > 1);
+            setIsHide(window.pageYOffset > scrollPos);
             setScrollPos(window.pageYOffset);
         };
 

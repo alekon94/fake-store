@@ -1,11 +1,21 @@
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 import { ReactComponent as FacebookIcon } from '../icons/footer_facebook.svg';
 import { ReactComponent as InstagramIcon } from '../icons/footer_instagram.svg';
 import { ReactComponent as MailIcon } from '../icons/footer_mail.svg';
 
+const iconStyles = css`
+    width: 100%;
+    transition: 0.2s;
+    stroke: ${({ theme }) => theme.colors.brand};
+
+    &:hover {
+        stroke: ${({ theme }) => theme.colors.grey};
+        transition: 0.2s;
+    }
+`;
 export const Social = styled.ul`
     display: flex;
     list-style-type: none;
@@ -23,7 +33,7 @@ export const SocialItem = styled.li`
         }
     }
 `;
-export const SocialLink = styled(NavLink)`
+export const SocialLink = styled(Link)`
     text-transform: uppercase;
     display: flex;
     color: inherit;
@@ -36,32 +46,11 @@ export const SocialLink = styled(NavLink)`
 `;
 
 export const Mail = styled(MailIcon)`
-    width: 100%;
-    transition: 0.2s;
-    stroke: ${({ theme }) => theme.colors.brand};
-
-    &:hover {
-        stroke: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
-    }
+    ${iconStyles}
 `;
 export const Instagram = styled(InstagramIcon)`
-    width: 100%;
-    transition: 0.2s;
-    stroke: ${({ theme }) => theme.colors.brand};
-
-    &:hover {
-        stroke: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
-    }
+    ${iconStyles}
 `;
 export const Facebook = styled(FacebookIcon)`
-    width: 100%;
-    transition: 0.2s;
-    stroke: ${({ theme }) => theme.colors.brand};
-
-    &:hover {
-        stroke: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
-    }
+    ${iconStyles}
 `;

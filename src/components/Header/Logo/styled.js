@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { ReactComponent as LogoIcon } from '../icons/header_logo.svg';
 
@@ -18,15 +18,5 @@ export const Logo = styled.div`
     width: auto;
     display: block;
     transition: 0.2s;
-    ${Icon} {
-        ${({ $isScrolled }) =>
-            $isScrolled &&
-            css`
-                &:hover {
-                    fill: ${({ theme }) => theme.colors.grey};
-                    transition: 0.2s;
-                }
-            `}
-    }
 `;
-export const LogoLink = styled(NavLink)``;
+export const LogoLink = styled(Link)``;

@@ -6,6 +6,15 @@ import styled, { css } from 'styled-components';
 import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
 import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
+const iconStyles = css`
+    transition: 0.2s;
+    display: flex;
+
+    &:hover {
+        stroke: ${({ theme }) => theme.colors.grey};
+        transition: 0.2s;
+    }
+`;
 export const NavMainLink = styled(NavLink)`
     ${mediaBreakpointUp('lg')} {
         text-transform: uppercase;
@@ -329,29 +338,10 @@ export const Nav = styled.nav`
                 opacity: 0;
             }
 
-            ${IconsItem} {
-                stroke: var(--header-color);
-                transition: 0.2s;
-                display: flex;
-
-                &:hover {
-                    stroke: ${({ theme }) => theme.colors.grey};
-                    transition: 0.2s;
-                }
-            }
-            ${Search} {
-                transition: 0.2s;
-                &:hover {
-                    stroke: ${({ theme }) => theme.colors.grey};
-                    transition: 0.2s;
-                }
-            }
+            ${IconsItem},
+            ${Search},
             ${Basket} {
-                transition: 0.2s;
-                &:hover {
-                    stroke: ${({ theme }) => theme.colors.grey};
-                    transition: 0.2s;
-                }
+                ${iconStyles}
             }
         `}
     ${({ $isScrolled }) =>

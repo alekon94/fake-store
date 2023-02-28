@@ -1,6 +1,6 @@
 import { ReactComponent as LogoIcon } from '@assets/images/svg_inline/logo.svg';
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Icon = styled(LogoIcon)`
@@ -21,4 +21,4 @@ export const Logo = styled.div`
         margin-bottom: 4.375rem;
     }
 `;
-export const LogoLink = styled(NavLink)``;
+export const LogoLink = styled(Link)``;

@@ -6,22 +6,22 @@ export default function List() {
     return (
         <S.List>
             <S.Item>
-                <S.Link to="/">Main</S.Link>
+                <S.MenuLink to="/">Main</S.MenuLink>
             </S.Item>
             <S.Item>
-                <S.Link to="/products">Products</S.Link>
+                <S.MenuLink to="/products">Products</S.MenuLink>
             </S.Item>
             <S.Item>
-                <S.Link to="/cart">Cart</S.Link>
+                <S.MenuLink to="/cart">Cart</S.MenuLink>
             </S.Item>
             <S.Item>
-                <S.Link to="/users">Users</S.Link>
+                <S.MenuLink to="/users">Users</S.MenuLink>
             </S.Item>
             <S.Item>
-                <S.Link to="/login">Login</S.Link>
+                <S.MenuLink to="/login">Login</S.MenuLink>
             </S.Item>
             <S.Item>
-                <S.Link to="/registration">Registration</S.Link>
+                <S.MenuLink to="/registration">Registration</S.MenuLink>
             </S.Item>
         </S.List>
     );

@@ -5,6 +5,16 @@ import styled, { css } from 'styled-components';
 import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
 import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
+const iconStyles = css`
+    stroke: var(--header-color);
+    fill: none;
+    transition: 0.2s;
+
+    &:hover {
+        stroke: ${({ theme }) => theme.colors.grey};
+        transition: 0.2s;
+    }
+`;
 export const BarIcons = styled.ul`
     display: -webkit-box;
     display: -webkit-flex;
@@ -61,24 +71,10 @@ export const IconsLink = styled(NavLink)`
 `;
 
 export const Basket = styled(BasketIcon)`
-    stroke: var(--header-color);
-    fill: none;
-    transition: 0.2s;
-
-    &:hover {
-        stroke: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
-    }
+    ${iconStyles}
 `;
 export const Search = styled(SearchIcon)`
-    stroke: var(--header-color);
-    fill: none;
-    transition: 0.2s;
-
-    &:hover {
-        stroke: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
-    }
+    ${iconStyles}
 `;
 export const Bar = styled.div`
     display: flex;
