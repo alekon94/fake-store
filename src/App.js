@@ -3,8 +3,6 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import './App.css';
-import Footer from './components/Footer/index';
-import Header from './components/Header/index';
 import Page from './components/Page';
 import ErrorPage from './pages/ErrorPage';
 import GlobalStyles from './theme/global';
@@ -23,7 +21,6 @@ function App() {
             <Router>
                 <GlobalStyles />
 
-                <Header />
                 <Page>
                     <React.Suspense>
                         <Routes>
@@ -41,8 +38,6 @@ function App() {
                         </Routes>
                     </React.Suspense>
                 </Page>
-
-                <Footer />
             </Router>
         </ThemeProvider>
     );

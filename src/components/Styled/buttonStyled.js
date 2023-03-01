@@ -38,8 +38,8 @@ export const ButtonIcon = styled(Button)`
     background-color: transparent;
     padding: 0 1.375rem;
     cursor: pointer;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
 
     svg {
         fill: none;

@@ -1,5 +1,5 @@
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const List = styled.ul`
@@ -37,10 +37,13 @@ export const Item = styled.ul`
         margin-right: 9.8125rem;
     }
 `;
-export const MenuLink = styled(Link)`
+export const MenuLink = styled(NavLink)`
     font-size: 0.75rem;
     text-transform: uppercase;
     ${mediaBreakpointUp('sm')} {
         font-size: 1rem;
+    }
+    &.active {
+        color: ${({ theme }) => theme.colors.grey};
     }
 `;

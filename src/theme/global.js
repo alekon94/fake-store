@@ -13,6 +13,9 @@ ${sizes}
   --header-color: ${({ theme }) => theme.colors.white};
   --color-gold: ${({ theme }) => theme.colors.gold};
   --color-silver: ${({ theme }) => theme.colors.silver};
+  --icon-color: ${({ theme }) => theme.colors.brand};
+    --icon-width: 1em;
+    --icon-height: 1em;
 ${propertyResponsive('--headerOffset', sizes.headerOffset)}
 ${propertyResponsive('--contentPaddingX', sizes.contentPaddingX)}
 ${propertyResponsive('--headerHeight', sizes.headerHeight)}

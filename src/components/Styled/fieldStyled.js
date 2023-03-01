@@ -6,8 +6,8 @@ export const Label = styled.label`
     left: 1.5rem;
     font-size: 1.125rem;
     z-index: 1;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
     color: inherit;
     letter-spacing: 0;
 `;
@@ -20,7 +20,7 @@ export const Field = styled.div`
     height: 4.375rem;
     text-align: left;
     text-align-last: left;
-    transition: border 0.3s ease;
+    transition: border 0.2s ease;
     box-shadow: none;
     width: 100%;
     position: relative;

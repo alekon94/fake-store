@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SPage = styled.main`
+const Main = styled.main`
     flex: 1;
 `;
-export default SPage;
+export default Main;

@@ -1,7 +1,6 @@
+import { ReactComponent as LogoIcon } from '@assets/images/logo.svg';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-import { ReactComponent as LogoIcon } from '../icons/header_logo.svg';
 
 export const Icon = styled(LogoIcon)`
     stroke: none;
@@ -10,7 +9,6 @@ export const Icon = styled(LogoIcon)`
 
     &:hover {
         fill: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
     }
 `;
 

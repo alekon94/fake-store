@@ -1,20 +1,11 @@
+import IconStyled from '@components/Styled/iconStyled';
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
-import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
+import { ReactComponent as BasketIcon } from '../icons/basket.svg';
+import { ReactComponent as SearchIcon } from '../icons/search.svg';
 
-const iconStyles = css`
-    stroke: var(--header-color);
-    fill: none;
-    transition: 0.2s;
-
-    &:hover {
-        stroke: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
-    }
-`;
 export const BarIcons = styled.ul`
     display: -webkit-box;
     display: -webkit-flex;
@@ -63,29 +54,15 @@ export const IconsLink = styled(Link)`
     display: flex;
     color: inherit;
     transition: 0.2s;
-
-    &:hover {
-        stroke: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
-    }
 `;
 
-export const Basket = styled(BasketIcon)`
-    ${iconStyles}
-`;
-export const Search = styled(SearchIcon)`
-    ${iconStyles}
-`;
+export const Basket = styled(IconStyled).attrs({ as: BasketIcon })``;
+export const Search = styled(IconStyled).attrs({ as: SearchIcon })``;
 export const Bar = styled.div`
     display: flex;
     -webkit-box-pack: end;
     justify-content: flex-end;
     width: 30%;
-
-    ${({ $isScrolled }) =>
-        $isScrolled &&
-        css`
-            color: var(--header-color);
-            transition: 0.2s;
-        `}
+    --icon-width: auto;
+    --icon-height: auto;
 `;

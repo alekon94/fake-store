@@ -1,32 +1,22 @@
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import pxToRem from '@theme/mixins/pxToRem';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
-import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
+import IconStyled from '../../../Styled/iconStyled';
+import { ReactComponent as BasketIcon } from '../icons/basket.svg';
+import { ReactComponent as SearchIcon } from '../icons/search.svg';
 
-const iconStyles = css`
-    stroke: ${({ theme }) => theme.colors.white};
-    fill: none;
-`;
-const iconStylesMobile = css`
-    transition: 0.2s;
-    display: flex;
-
-    &:hover {
-        stroke: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
-    }
-`;
-export const NavMainLink = styled(Link)`
+export const NavMainLink = styled(NavLink)`
     ${mediaBreakpointUp('lg')} {
         text-transform: uppercase;
         color: var(--header-color);
         transition: 0.2s;
 
         &:hover {
-            transition: 0.2s;
+            color: ${({ theme }) => theme.colors.grey};
+        }
+        &.active {
             color: ${({ theme }) => theme.colors.grey};
         }
     }
@@ -59,13 +49,8 @@ export const MobileBurger = styled.span`
     transform: translateY(-50%);
     -webkit-transition: opacity 0.1s linear;
     transition: opacity 0.1s linear;
-    background-color: var(--header-color);
+    background-color: var(--burger-color);
     transition: 0.2s;
-
-    &:hover {
-        background-color: ${({ theme }) => theme.colors.grey};
-        transition: 0.2s;
-    }
 `;
 export const MobileButton = styled.button`
     position: relative;
@@ -79,7 +64,7 @@ export const MobileButton = styled.button`
         top: 0%;
         content: '';
         height: 0.125rem;
-        background-color: var(--header-color);
+        background-color: var(--burger-color);
         position: absolute;
         left: 0;
         border-radius: 0.1875rem;
@@ -88,6 +73,7 @@ export const MobileButton = styled.button`
         transition: transform 0.2s, width 0.2s, height 0.2s;
         transition: transform 0.2s, width 0.2s, height 0.2s,
             -webkit-transform 0.2s;
+        transition: 0.2s;
     }
 
     &::after {
@@ -95,7 +81,7 @@ export const MobileButton = styled.button`
         bottom: 0%;
         content: '';
         height: 0.125rem;
-        background-color: var(--header-color);
+        background-color: var(--burger-color);
         position: absolute;
         left: 0;
         border-radius: 0.1875rem;
@@ -104,22 +90,11 @@ export const MobileButton = styled.button`
         transition: transform 0.2s, width 0.2s, height 0.2s;
         transition: transform 0.2s, width 0.2s, height 0.2s,
             -webkit-transform 0.2s;
+        transition: 0.2s;
     }
 
     &:hover {
-        &::before {
-            background-color: ${({ theme }) => theme.colors.grey};
-            transition: 0.2s;
-        }
-
-        &::after {
-            background-color: ${({ theme }) => theme.colors.grey};
-            transition: 0.2s;
-        }
-        ${MobileBurger} {
-            background-color: ${({ theme }) => theme.colors.grey};
-            transition: 0.2s;
-        }
+        --burger-color: ${({ theme }) => theme.colors.grey};
     }
 `;
 export const MobileTitle = styled.div`
@@ -161,40 +136,20 @@ export const IconsItem = styled.li`
     align-items: center;
     display: none;
     -webkit-box-align: center;
-
-    &:first-child {
-        display: none;
-    }
-
-    &:last-child {
-        display: flex;
-    }
-
-    ${mediaBreakpointUp('sm')} {
-        display: flex;
-    }
-    ${mediaBreakpointUp('lg')} {
-        &:first-child {
-            display: flex;
-        }
-    }
 `;
-export const Basket = styled(BasketIcon)`
-    ${iconStyles}
-`;
-export const Search = styled(SearchIcon)`
-    ${iconStyles}
-`;
+export const Basket = styled(IconStyled).attrs({ as: BasketIcon })``;
+
+export const Search = styled(IconStyled).attrs({ as: SearchIcon })``;
 
 export const IconsLink = styled(Link)`
+    --icon-width: auto;
+    --icon-height: auto;
+    --icon-color: ${({ theme }) => theme.colors.white};
     text-transform: uppercase;
     display: flex;
     position: relative;
 `;
-export const IconsIcon = styled(Link)`
-    stroke: var(--header-color);
-    fill: none;
-`;
+export const IconsIcon = styled(Link)``;
 export const MobileList = styled.ul`
     display: none;
     -webkit-box-pack: justify;
@@ -236,6 +191,8 @@ export const Mobile = styled.div`
     }
 `;
 export const Nav = styled.nav`
+    --burger-color: var(--header-color);
+
     width: 30%;
     -webkit-box-pack: end;
     justify-content: flex-end;
@@ -271,7 +228,16 @@ export const Nav = styled.nav`
                     rgba(36, 41, 52, 0.25)
                 );
             }
-            ${MobileList} {
+            ${MobileIcons} {
+                display: flex;
+                width: auto;
+                justify-content: center;
+                grid-gap: 1rem;
+                gap: 1rem;
+                display: flex;
+            }
+            ${IconsItem} {
+                display: flex;
             }
             ${MobileButton} {
                 margin: 0.9375rem 1rem 2.25rem auto;
@@ -280,7 +246,7 @@ export const Nav = styled.nav`
                     transform: translateY(-50%) rotate(45deg);
                     top: 50%;
                     width: 100%;
-                    background-color: var(--header-color);
+                    background-color: var(--burger-color);
                     content: '';
                     height: 0.125rem;
                     position: absolute;
@@ -288,12 +254,13 @@ export const Nav = styled.nav`
                     border-radius: 0.1875rem;
                     transition: transform 0.2s, width 0.2s, height 0.2s,
                         -webkit-transform 0.2s;
+                    transition: 0.2s;
                 }
                 &::after {
                     transform: translateY(-50%) rotate(-45deg);
                     top: 50%;
                     width: 100%;
-                    background-color: var(--header-color);
+                    background-color: var(--burger-color);
                     bottom: 0%;
                     content: '';
                     height: 0.125rem;
@@ -302,17 +269,10 @@ export const Nav = styled.nav`
                     border-radius: 0.1875rem;
                     transition: transform 0.2s, width 0.2s, height 0.2s,
                         -webkit-transform 0.2s;
+                    transition: 0.2s;
                 }
                 &:hover {
-                    &::before {
-                        background-color: ${({ theme }) => theme.colors.grey};
-                        transition: 0.2s;
-                    }
-
-                    &::after {
-                        background-color: ${({ theme }) => theme.colors.grey};
-                        transition: 0.2s;
-                    }
+                    --burger-color: ${({ theme }) => theme.colors.grey};
                 }
             }
             ${MobileTitle} {
@@ -326,24 +286,11 @@ export const Nav = styled.nav`
                 font-style: normal;
                 margin-top: -3.2rem;
             }
-            ${MobileIcons} {
-                width: auto;
-                justify-content: center;
-                grid-gap: 1rem;
-                gap: 1rem;
-                display: flex;
-            }
             ${MobileList} {
                 display: block;
             }
             ${MobileBurger} {
                 opacity: 0;
-            }
-
-            ${IconsItem},
-            ${Search},
-            ${Basket} {
-                ${iconStylesMobile}
             }
         `}
     ${({ $isScrolled }) =>
@@ -354,44 +301,26 @@ export const Nav = styled.nav`
                 color: ${({ theme }) => theme.colors.brand};
                 &:hover {
                     color: ${({ theme }) => theme.colors.grey};
-                    transition: 0.2s;
                 }
+                &.active {
+            color: ${({ theme }) => theme.colors.grey};
+        }
             }
             ${MobileBurger} {
-                transition: 0.2s;
                 &:hover {
                     background-color: ${({ theme }) => theme.colors.grey};
-                    transition: 0.2s;
                 }
             }
             ${IconsItem} {
             }
             ${MobileButton} {
+                
                 ${({ $showMobile }) =>
                     $showMobile &&
                     css`
-                        &::before {
-                            background-color: ${({ theme }) =>
-                                theme.colors.white};
-                        }
-                        &::after {
-                            background-color: ${({ theme }) =>
-                                theme.colors.white};
-                        }
+                        --burger-color: ${({ theme }) => theme.colors.white};
                     `}
-                &:hover {
-                    &::before {
-                        background-color: ${({ theme }) => theme.colors.grey};
-                        transition: 0.2s;
-                    }
-                    &::after {
-                        background-color: ${({ theme }) => theme.colors.grey};
-                        transition: 0.2s;
-                    }
-                    ${MobileBurger} {
-                        background-color: ${({ theme }) => theme.colors.grey};
-                        transition: 0.2s;
-                    }
+
                 }
             }
         `}

@@ -2,6 +2,8 @@ import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import styled, { css } from 'styled-components';
 
 export const Header = styled.header`
+    --icon-color: var(--header-color);
+
     transform: ${({ isHide }) =>
         isHide ? 'translateY(-100%)' : 'translateY(0)'};
     display: block;

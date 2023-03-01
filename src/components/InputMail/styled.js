@@ -1,9 +1,9 @@
-import * as B from '@components/Button/styled';
-import * as F from '@components/Field/styled';
+import * as B from '@components/Styled/buttonStyled';
+import * as F from '@components/Styled/fieldStyled';
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import styled from 'styled-components';
 
-import { ReactComponent as ButtonIcon } from './icons/footer_button.svg';
+import { ReactComponent as ButtonIcon } from './icons/button.svg';
 
 export const Inner = styled.div`
     display: flex;
@@ -20,11 +20,11 @@ export const Field = styled(F.Field)`
 `;
 export const Icon = styled(ButtonIcon)`
     stroke: ${({ theme }) => theme.colors.brand};
+    transition: 0.2s;
 `;
 export const Button = styled(B.ButtonIcon)`
     &:hover {
         ${Icon} {
-            transition: 0.2s;
             stroke: ${({ theme }) => theme.colors.white};
         }
     }

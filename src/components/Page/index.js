@@ -1,10 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import SPage from './styled';
+import Footer from './Footer';
+import Header from './Header';
+import Main from './styled';
 
 export default function Page({ children }) {
-    return <SPage>{children}</SPage>;
+    return (
+        <>
+            <Header />
+            <Main>{children}</Main>
+            <Footer />
+        </>
+    );
 }
 
 Page.propTypes = {
