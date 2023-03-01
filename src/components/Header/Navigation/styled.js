@@ -1,12 +1,16 @@
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import pxToRem from '@theme/mixins/pxToRem';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
 import { ReactComponent as SearchIcon } from '../icons/header_search.svg';
 
 const iconStyles = css`
+    stroke: ${({ theme }) => theme.colors.white};
+    fill: none;
+`;
+const iconStylesMobile = css`
     transition: 0.2s;
     display: flex;
 
@@ -15,7 +19,7 @@ const iconStyles = css`
         transition: 0.2s;
     }
 `;
-export const NavMainLink = styled(NavLink)`
+export const NavMainLink = styled(Link)`
     ${mediaBreakpointUp('lg')} {
         text-transform: uppercase;
         color: var(--header-color);
@@ -176,20 +180,18 @@ export const IconsItem = styled.li`
     }
 `;
 export const Basket = styled(BasketIcon)`
-    stroke: ${({ theme }) => theme.colors.white};
-    fill: none;
+    ${iconStyles}
 `;
 export const Search = styled(SearchIcon)`
-    stroke: ${({ theme }) => theme.colors.white};
-    fill: none;
+    ${iconStyles}
 `;
 
-export const IconsLink = styled(NavLink)`
+export const IconsLink = styled(Link)`
     text-transform: uppercase;
     display: flex;
     position: relative;
 `;
-export const IconsIcon = styled(NavLink)`
+export const IconsIcon = styled(Link)`
     stroke: var(--header-color);
     fill: none;
 `;
@@ -206,7 +208,7 @@ export const MobileItem = styled.li`
     margin-right: 0;
     text-align: center;
 `;
-export const MobileLink = styled(NavLink)`
+export const MobileLink = styled(Link)`
     font-family: 'Harmond', sans-serif;
     font-weight: 800;
     margin: 0;
@@ -341,7 +343,7 @@ export const Nav = styled.nav`
             ${IconsItem},
             ${Search},
             ${Basket} {
-                ${iconStyles}
+                ${iconStylesMobile}
             }
         `}
     ${({ $isScrolled }) =>
@@ -392,8 +394,5 @@ export const Nav = styled.nav`
                     }
                 }
             }
-            /* ${MobileTitle} {
-                color: ${({ theme }) => theme.colors.brand};
-            } */
         `}
 `;

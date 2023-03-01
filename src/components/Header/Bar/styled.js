@@ -1,5 +1,5 @@
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { ReactComponent as BasketIcon } from '../icons/header_bascet.svg';
@@ -58,7 +58,7 @@ export const IconsItem = styled.li`
         }
     }
 `;
-export const IconsLink = styled(NavLink)`
+export const IconsLink = styled(Link)`
     text-transform: uppercase;
     display: flex;
     color: inherit;
