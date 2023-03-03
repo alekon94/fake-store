@@ -49,3 +49,18 @@ export const ButtonIcon = styled(Button)`
         background-color: var(--btn-icon-color);
     }
 `;
+export const ButtonBlur = styled(Button)`
+    --btn-text: ${({ theme }) => theme.colors.white};
+    border: 0.0625rem solid transparent;
+    backdrop-filter: blur(10px);
+    background: -webkit-linear-gradient(
+        bottom,
+        rgba(36, 41, 52, 0.25),
+        rgba(36, 41, 52, 0.25)
+    );
+    background: linear-gradient(
+        0deg,
+        rgba(36, 41, 52, 0.25),
+        rgba(36, 41, 52, 0.25)
+    );
+`;

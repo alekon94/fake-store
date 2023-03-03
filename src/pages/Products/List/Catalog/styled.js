@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Catalog = styled.div`
     padding-left: 1rem;
     padding-right: 1rem;
-    background: $c-white;
+    background: ${({ theme }) => theme.colors.white};
     position: relative;
     padding-top: 7.5rem;
     display: flex;
