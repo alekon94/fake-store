@@ -139,7 +139,7 @@ export const Media = styled.div`
 const productFadeIn = keyframes`
  from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(1.25rem);
   }
   to {
     opacity: 1;
