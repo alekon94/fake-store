@@ -3,9 +3,9 @@ import React from 'react';
 
 import VisuallyHiddenCss from './styled';
 
-export default function VisuallyHidden({ text }) {
-    return <VisuallyHiddenCss>{text}</VisuallyHiddenCss>;
+export default function VisuallyHidden({ children }) {
+    return <VisuallyHiddenCss>{children}</VisuallyHiddenCss>;
 }
 VisuallyHidden.propTypes = {
-    text: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
 };

@@ -1,7 +1,7 @@
 import { ButtonBlur } from '@components/Styled/buttonStyled';
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Information = styled.div``;
 export const Wrapper = styled.div``;
@@ -136,6 +136,16 @@ export const Media = styled.div`
         }
     }
 `;
+const productFadeIn = keyframes`
+ from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 export const Card = styled.div`
     display: -webkit-box;
     display: -webkit-flex;
@@ -146,6 +156,9 @@ export const Card = styled.div`
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
+    animation-name: ${productFadeIn};
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
     &:hover {
         width: 100%;
         -webkit-transition: 0.3s;

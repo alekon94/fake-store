@@ -6,7 +6,7 @@ import LoadingCircle from './styled';
 export default function Loading() {
     return (
         <LoadingCircle>
-            <VisuallyHidden text="loading..." />
+            <VisuallyHidden>Loading...</VisuallyHidden>
         </LoadingCircle>
     );
 }
