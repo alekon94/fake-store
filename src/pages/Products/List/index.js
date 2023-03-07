@@ -20,10 +20,6 @@ function fetchReducer(state, action) {
             error: null,
             loading: false,
             finalProducts: action.products.slice(0, state.pageSize),
-            allPage:
-                action.products.length === 0
-                    ? 1
-                    : Math.ceil(action.products.length / state.pageSize),
         };
     }
     if (action.type === 'error') {
@@ -56,15 +52,11 @@ export default function List() {
         currentPage: 1,
         finalProducts: [],
         pageSize: 6,
-        allPage: 1,
     });
     const [page, setPage] = React.useState(1);
     const [element, setElement] = React.useState(null);
 
     React.useEffect(() => {
-        if (page === 1) {
-            dispatch({ type: 'fetch' });
-        }
         getProducts()
             .then((products) => {
                 if (page === 1) {
@@ -83,7 +75,7 @@ export default function List() {
             (entries) => {
                 const first = entries[0];
                 if (first.isIntersecting) {
-                    setPage((prev) => prev + 1);
+                    setPage((prev) => prev + 2);
                 }
             },
             { threshold: 1 },

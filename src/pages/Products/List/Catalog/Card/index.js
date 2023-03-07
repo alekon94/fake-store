@@ -10,7 +10,9 @@ export default function Card({ product }) {
             <S.Information>
                 <S.Wrapper>
                     <S.Title>
-                        <S.TitleLink to="/">{product.title}</S.TitleLink>
+                        <S.TitleLink to={`/products/${product.id}`}>
+                            {product.title}
+                        </S.TitleLink>
                     </S.Title>
                     <S.Price>
                         <S.Regular>
