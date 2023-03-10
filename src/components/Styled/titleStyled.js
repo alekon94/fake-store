@@ -19,3 +19,13 @@ export const TitleStyled2 = styled.h2`
         font-size: 4.5rem;
     }
 `;
+export const TitleStyled3 = styled.h1`
+    font-family: 'Harmond', sans-serif;
+    font-weight: 800;
+    margin: 0;
+    font-size: 2.25rem;
+    color: ${({ theme }) => theme.colors.black};
+    ${mediaBreakpointUp('sm')} {
+        font-size: 2.25rem;
+    }
+`;

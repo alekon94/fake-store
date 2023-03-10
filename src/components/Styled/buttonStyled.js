@@ -64,3 +64,15 @@ export const ButtonBlur = styled(Button)`
         rgba(36, 41, 52, 0.25)
     );
 `;
+export const ButtonBlack = styled(Button)`
+    border: 0.0625rem solid ${({ theme }) => theme.colors.brand};
+    --btn-bg: ${({ theme }) => theme.colors.brand};
+    --btn-text: ${({ theme }) => theme.colors.white};
+
+    &:hover {
+        --btn-bg: ${({ theme }) => theme.colors.accent};
+        --btn-text: ${({ theme }) => theme.colors.brand};
+        transition: 0.3s;
+        border: 0.0625rem solid var(--btn-bg);
+    }
+`;

@@ -24,7 +24,7 @@ export default function Card({ product }) {
             <S.Product>
                 <S.Inner>
                     <S.Media>
-                        <S.MediaLink to="/">
+                        <S.MediaLink to={`/products/${product.id}`}>
                             <S.Image src={product.image} />
                         </S.MediaLink>
                         <S.Button>

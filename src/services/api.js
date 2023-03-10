@@ -8,3 +8,11 @@ export default function getProducts() {
             .catch((error) => reject(error));
     });
 }
+export function getSingleProduct(id) {
+    return new Promise((resolve, reject) => {
+        instance
+            .get(`/products/${id}`)
+            .then((response) => resolve(response.data))
+            .catch((error) => reject(error));
+    });
+}
