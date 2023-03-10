@@ -236,6 +236,7 @@ export const Nav = styled.nav`
                 display: flex;
             }
             ${MobileButton} {
+                --burger-color: ${({ theme }) => theme.colors.white};
                 margin: 0.9375rem 1rem 2.25rem auto;
                 top: 0%;
                 &::before {
@@ -293,7 +294,6 @@ export const Nav = styled.nav`
         $isScrolled &&
         css`
             ${NavMainLink} {
-                background-color: ${({ theme }) => theme.colors.white};
                 color: ${({ theme }) => theme.colors.brand};
                 &:hover {
                     color: ${({ theme }) => theme.colors.grey};

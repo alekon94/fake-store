@@ -11,12 +11,12 @@ export const Header = styled.header`
     top: 0;
     position: fixed;
     width: 100%;
-    height: var(--headerOffset);
+    height: 3.125rem;
     color: var(--header-color, ${({ theme }) => theme.colors.brand});
     transition: background-color 0.3s ease, color 0.3s ease,
         transform 0.3s linear, -webkit-transform 0.3s linear;
     ${mediaBreakpointUp('md')} {
-        height: var(--headerOffset);
+        height: 6.25rem;
     }
     ${({ isScrolled }) =>
         isScrolled &&

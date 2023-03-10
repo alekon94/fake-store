@@ -1,6 +1,11 @@
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
+export const GlobalStyle = createGlobalStyle`
+:root {
+    --headerOffset: 0rem;
+    --header-color: ${({ theme }) => theme.colors.white};
+}`;
 export const Catalog = styled.div`
     padding-left: 1rem;
     padding-right: 1rem;
