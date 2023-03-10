@@ -1,9 +1,10 @@
+import IconStyled from '@components/Styled/iconStyled';
+import { TitleStyled2 } from '@components/Styled/titleStyled';
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import pxToRem from '@theme/mixins/pxToRem';
 import { Link, NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import IconStyled from '../../../Styled/iconStyled';
 import { ReactComponent as BasketIcon } from '../icons/basket.svg';
 import { ReactComponent as SearchIcon } from '../icons/search.svg';
 
@@ -163,12 +164,7 @@ export const MobileItem = styled.li`
     margin-right: 0;
     text-align: center;
 `;
-export const MobileLink = styled(Link)`
-    font-family: 'Harmond', sans-serif;
-    font-weight: 800;
-    margin: 0;
-    font-size: 3rem;
-    color: ${({ theme }) => theme.colors.white};
+export const MobileLink = styled(TitleStyled2).attrs({ as: Link })`
     text-transform: initial;
     font-size: 2.8125rem;
     ${mediaBreakpointUp('sm')} {
@@ -240,6 +236,7 @@ export const Nav = styled.nav`
                 display: flex;
             }
             ${MobileButton} {
+                --burger-color: ${({ theme }) => theme.colors.white};
                 margin: 0.9375rem 1rem 2.25rem auto;
                 top: 0%;
                 &::before {
@@ -297,7 +294,6 @@ export const Nav = styled.nav`
         $isScrolled &&
         css`
             ${NavMainLink} {
-                background-color: ${({ theme }) => theme.colors.white};
                 color: ${({ theme }) => theme.colors.brand};
                 &:hover {
                     color: ${({ theme }) => theme.colors.grey};

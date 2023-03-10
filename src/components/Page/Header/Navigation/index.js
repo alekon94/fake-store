@@ -55,7 +55,7 @@ export default function Navigation({ isScrolled }) {
             <S.Mobile>
                 <S.MobileButton onClick={handleButtonClick}>
                     <S.MobileBurger />
-                    <VisuallyHidden />
+                    <VisuallyHidden>Mobile menu</VisuallyHidden>
                 </S.MobileButton>
                 <S.MobileTitle>Menu</S.MobileTitle>
                 <S.MobileIcons>
