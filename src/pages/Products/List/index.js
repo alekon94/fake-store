@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
 
 import getProducts from '../../../services/api';
 import Catalog from './Catalog';
@@ -45,7 +45,7 @@ function fetchReducer(state, action) {
 }
 
 export default function List() {
-    const [state, dispatch] = React.useReducer(fetchReducer, {
+    const [state, dispatch] = useReducer(fetchReducer, {
         products: null,
         error: null,
         loading: true,
@@ -53,51 +53,53 @@ export default function List() {
         finalProducts: [],
         pageSize: 6,
     });
-    const [page, setPage] = React.useState(1);
-    const [element, setElement] = React.useState(null);
+    const [page, setPage] = useState(1);
+    const loader = useRef(null);
 
-    React.useEffect(() => {
-        getProducts()
-            .then((products) => {
-                if (page === 1) {
+    useEffect(() => {
+        if (page === 1) {
+            getProducts()
+                .then((products) => {
                     dispatch({ type: 'success', products });
-                } else {
-                    dispatch({
-                        type: 'next',
-                    });
-                }
-            })
-            .catch(({ message }) => dispatch({ type: 'error', message }));
+                })
+                .catch(({ message }) => dispatch({ type: 'error', message }));
+        } else {
+            dispatch({
+                type: 'next',
+            });
+        }
     }, [page]);
 
-    const observer = React.useRef(
-        new IntersectionObserver(
-            (entries) => {
-                const first = entries[0];
-                if (first.isIntersecting) {
-                    setPage((prev) => prev + 2);
-                }
-            },
-            { threshold: 1 },
-        ),
-    );
+    useEffect(() => {
+        let observerRefValue = null;
+        const options = {
+            root: null,
+            rootMargin: '200px',
+            threshold: 0.1,
+        };
 
-    React.useEffect(() => {
-        const currentElement = element;
-        const currentObserver = observer.current;
-        if (currentElement) {
-            currentObserver.observe(currentElement);
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setPage((prevPage) => prevPage + 1);
+            }
+        }, options);
+
+        if (loader.current) {
+            observer.observe(loader.current);
+            observerRefValue = loader.current;
         }
+
         return () => {
-            if (currentElement) {
-                currentObserver.unobserve(currentElement);
+            if (observerRefValue) {
+                observer.unobserve(observerRefValue);
             }
         };
-    }, [element]);
+    }, []);
+
     return (
         <>
             <Intro />
-            <Catalog state={state} setElement={setElement} />
+            <Catalog state={state} loader={loader} />
         </>
     );
 }

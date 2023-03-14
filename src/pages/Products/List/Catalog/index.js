@@ -6,7 +6,7 @@ import React from 'react';
 import Card from './Card';
 import * as S from './styled';
 
-export default function Catalog({ state, setElement }) {
+export default function Catalog({ state, loader }) {
     return (
         <>
             <S.GlobalStyle />
@@ -14,7 +14,13 @@ export default function Catalog({ state, setElement }) {
             <S.Catalog>
                 <S.Container>
                     <S.Wrapper>
-                        {state.loading === true ? <Loading /> : ''}
+                        {state.loading === true ? (
+                            <div style={{ height: '150rem' }}>
+                                <Loading />
+                            </div>
+                        ) : (
+                            ''
+                        )}
                         {state.error ? <p>Error</p> : ''}
                         {state.finalProducts ? (
                             <S.List>
@@ -23,11 +29,11 @@ export default function Catalog({ state, setElement }) {
                                         <Card product={product} />
                                     </S.Item>
                                 ))}
-                                <div ref={setElement} />
                             </S.List>
                         ) : (
                             ''
                         )}
+                        <div ref={loader} />
                     </S.Wrapper>
                 </S.Container>
             </S.Catalog>
@@ -37,5 +43,5 @@ export default function Catalog({ state, setElement }) {
 
 Catalog.propTypes = {
     state: PropTypes.object.isRequired,
-    setElement: PropTypes.func.isRequired,
+    loader: PropTypes.object.isRequired,
 };

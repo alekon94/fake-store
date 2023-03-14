@@ -1,7 +1,7 @@
 import Breadcrumbs from '@components/Breadсrumbs';
 import Loading from '@components/Loading';
 import { getSingleProduct } from '@services/api';
-import React from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as S from './styled';
@@ -35,13 +35,13 @@ function fetchReducer(state, action) {
 export default function Product() {
     const { id } = useParams();
 
-    const [state, dispatch] = React.useReducer(fetchReducer, {
+    const [state, dispatch] = useReducer(fetchReducer, {
         product: null,
         error: null,
         loading: true,
     });
 
-    React.useEffect(() => {
+    useEffect(() => {
         getSingleProduct(id)
             .then((product) => {
                 dispatch({ type: 'success', product });

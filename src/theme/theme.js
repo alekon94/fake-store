@@ -11,6 +11,8 @@ const baseTheme = {
         textLight: '#FBFBFB',
         silver: '#D2D2D2',
         gold: '#ECD278',
+        header: '#163F2B',
     },
 };
+
 export default baseTheme;
