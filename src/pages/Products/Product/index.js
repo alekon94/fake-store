@@ -15,7 +15,6 @@ function fetchReducer(state, action) {
         };
     }
     if (action.type === 'success') {
-        console.log(action.product);
         return {
             product: action.product,
             error: null,

@@ -1,7 +1,6 @@
+import { TitleStyled2 } from '@components/Styled/titleStyled';
 import mediaBreakpointUp from '@theme/mixins/mediaBreakpointUp';
 import styled from 'styled-components';
-
-import { TitleStyled2 } from '../../../../components/Styled/titleStyled';
 
 export const Intro = styled.div`
     width: 100%;
