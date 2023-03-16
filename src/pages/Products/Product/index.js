@@ -1,5 +1,7 @@
+import { Accordion, AccordionItem } from '@components/Accordion';
 import Breadcrumbs from '@components/Breadсrumbs';
 import Loading from '@components/Loading';
+import PriceHelper from '@components/PriceHelper';
 import { getSingleProduct } from '@services/api';
 import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
@@ -75,18 +77,36 @@ export default function Product() {
                                                 <S.Price>
                                                     <S.PriceRegular>
                                                         <S.PriceItem>
-                                                            $
-                                                            {
-                                                                state.product
-                                                                    .price
-                                                            }
+                                                            <PriceHelper
+                                                                price={
+                                                                    state
+                                                                        .product
+                                                                        .price
+                                                                }
+                                                            />
                                                         </S.PriceItem>
                                                     </S.PriceRegular>
                                                 </S.Price>
                                             </S.InfoPrice>
                                         </S.InfoRow>
                                         <S.InfoDescription>
-                                            {state.product.description}
+                                            <Accordion>
+                                                <AccordionItem
+                                                    title={state.product.title}
+                                                >
+                                                    {state.product.description}
+                                                </AccordionItem>
+                                                <AccordionItem
+                                                    title={state.product.title}
+                                                >
+                                                    {state.product.description}
+                                                </AccordionItem>
+                                                <AccordionItem
+                                                    title={state.product.title}
+                                                >
+                                                    {state.product.description}
+                                                </AccordionItem>
+                                            </Accordion>
                                         </S.InfoDescription>
                                         <S.ButtonBox>
                                             <S.Button
@@ -98,7 +118,11 @@ export default function Product() {
                                                     Add to cart
                                                 </S.ButtonText>
                                                 <S.Price>
-                                                    ${state.product.price}
+                                                    <PriceHelper
+                                                        price={
+                                                            state.product.price
+                                                        }
+                                                    />
                                                 </S.Price>
                                             </S.Button>
                                         </S.ButtonBox>

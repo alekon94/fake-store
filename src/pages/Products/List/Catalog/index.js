@@ -14,13 +14,7 @@ export default function Catalog({ state, loader }) {
             <S.Catalog>
                 <S.Container>
                     <S.Wrapper>
-                        {state.loading === true ? (
-                            <div style={{ height: '150rem' }}>
-                                <Loading />
-                            </div>
-                        ) : (
-                            ''
-                        )}
+                        {state.loading === true ? <Loading /> : ''}
                         {state.error ? <p>Error</p> : ''}
                         {state.finalProducts ? (
                             <S.List>

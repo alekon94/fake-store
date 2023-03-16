@@ -74,12 +74,12 @@ export default function List() {
         let observerRefValue = null;
         const options = {
             root: null,
-            rootMargin: '200px',
-            threshold: 0.1,
+            rootMargin: '',
+            threshold: 0,
         };
 
         const observer = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && state.loading === false) {
                 setPage((prevPage) => prevPage + 1);
             }
         }, options);
@@ -94,7 +94,7 @@ export default function List() {
                 observer.unobserve(observerRefValue);
             }
         };
-    }, []);
+    }, [state.loading]);
 
     return (
         <>

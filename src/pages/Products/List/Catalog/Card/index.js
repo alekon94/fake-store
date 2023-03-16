@@ -1,10 +1,12 @@
 /* eslint-disable react/forbid-prop-types */
+import PriceHelper from '@components/PriceHelper';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import * as S from './styled';
 
 export default function Card({ product }) {
+    console.log(product);
     return (
         <S.Card>
             <S.Information>
@@ -16,7 +18,9 @@ export default function Card({ product }) {
                     </S.Title>
                     <S.Price>
                         <S.Regular>
-                            <S.PriceItem>$ {product.price}</S.PriceItem>
+                            <S.PriceItem>
+                                <PriceHelper price={product.price} />
+                            </S.PriceItem>
                         </S.Regular>
                     </S.Price>
                 </S.Wrapper>
@@ -29,7 +33,9 @@ export default function Card({ product }) {
                         </S.MediaLink>
                         <S.Button>
                             <S.ButtonText>Add to cart</S.ButtonText>
-                            <S.ButtonPrice>${product.price}</S.ButtonPrice>
+                            <S.ButtonPrice>
+                                <PriceHelper price={product.price} />
+                            </S.ButtonPrice>
                         </S.Button>
                     </S.Media>
                 </S.Inner>
