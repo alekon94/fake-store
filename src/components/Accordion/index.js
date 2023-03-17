@@ -4,29 +4,48 @@
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { PropTypes } from 'prop-types';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import * as S from './styled';
 
 function Accordion({ children }) {
     const [activeIndex, setActiveIndex] = useState(-1);
+    const content = useRef(null);
 
+    function toggleAccordion(isActive, index) {
+        setActiveIndex(isActive ? -1 : index);
+    }
     return (
         <S.List>
             {React.Children.map(children, (child, index) => {
                 const isActive = activeIndex === index;
                 return (
-                    <S.Item>
-                        <S.Title
-                            onClick={() =>
-                                setActiveIndex(isActive ? -1 : index)
+                    <S.Item
+                        onClick={() => toggleAccordion(isActive, index)}
+                        isActive={isActive}
+                    >
+                        <S.TitleBox>
+                            <S.Button
+                                type="button"
+                                onClick={() => toggleAccordion(isActive, index)}
+                            >
+                                {' '}
+                                <S.Title>{child.props.title}</S.Title>
+                            </S.Button>
+                        </S.TitleBox>
+                        <S.Content
+                            ref={content}
+                            style={
+                                isActive
+                                    ? {
+                                          maxHeight:
+                                              content.current.scrollHeight,
+                                      }
+                                    : { maxHeight: '0px' }
                             }
                         >
-                            {child.props.title}
-                        </S.Title>
-                        {isActive && (
-                            <S.Content>{child.props.children}</S.Content>
-                        )}
+                            {child.props.children}
+                        </S.Content>
                     </S.Item>
                 );
             })}
@@ -35,10 +54,12 @@ function Accordion({ children }) {
 }
 
 function AccordionItem({ title, children }) {
+    const content = useRef(null);
+
     return (
         <S.Item>
-            <S.Title>{title}</S.Title>
-            <S.Content>{children}</S.Content>
+            <S.TitleBox>{title}</S.TitleBox>
+            <S.Content ref={content}>{children}</S.Content>
         </S.Item>
     );
 }
@@ -50,5 +71,5 @@ Accordion.propTypes = {
 };
 AccordionItem.propTypes = {
     title: PropTypes.string.isRequired,
-    children: PropTypes.object.isRequired,
+    children: PropTypes.string.isRequired,
 };
